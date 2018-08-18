@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>原型和原型链</title>
+	</head>
+	<body>
+		<h1>题目</h1>
+		<ul>
+			<li>如何判断一个变量是数组类型</li>
+			<li>写一个原型链继承的例子</li>
+			<li>描述new一个对象的过程</li>
+			<li>zepto(其他框架)中如何使用原型链</li>
+		</ul>
+		<script type="text/javascript">
+			//构造函数
+			function FOO(name,age,sex) {
+				this.name=name;
+				this.age=age;
+				this.sex=sex
+			}
+			//new 一个对象的时候，this是一个空对象，当完成赋值后，默认 return this
+			var f= new FOO("taotao",18,"女")
+			
+			//构造函数的扩展
+			//原型规则
+			var obj= {};
+			obj.a=100;
+			var arr=[];
+			arr.a=100;
+			function fn(){}
+			fn.a=100;
+			//console.log(obj.__proto__);//对象有一个隐式原型属性
+			//console.log(arr.__proto__)//数组有一个隐式原型属性
+			//console.log(fn.__proto__)//函数有一个隐式原型属性
+			//console.log(fn.prototype)//函数有显示原型属性
+			//console.log(obj.__proto__=== Object.prototype);//引用的隐式属性就是构造函数的显示原型属性
+			function BOO(name,age,sex) {
+				this.name=name;
+			}
+			BOO.prototype.alertName=function() {
+				console.log(this.name)
+			}
+			var B= new BOO("taotao")
+			B.printName=function () {
+				console.log(this.name)
+			}
+			B.printName();
+			console.log(BOO.prototype)
+			console.log(B.prototype)
+			B.alertName();//当对象本身没有这个属性的时候，会去他的构造函数的prototype（自己的__proto__里面)寻找
+		  B.toString();//当
+		  var item
+		  for (item in B) {//循环属性时，浏览器会屏蔽来自原型的属性
+		  	if(B.hasOwnProperty(item)){//为了代码的健壮性，还是做个判断比较好
+		  		console.log(item)
+		  	}
+		  }
+		  //一个小例子
+		  function animal(){};
+      function dog(){};
+      animal.price = 2000;
+      dog.prototype.c = animal;
+      dog.prototype.h = 22;
+      console.log(animal.prototype)
+      console.log(dog.prototype)
+      console.log(dog.c) 
+      var h = new dog() 
+      console.log(h.h) 
+      console.log(h.c) 
+      
+      //这里会是undifiend  为什么？
+      //因为prototype是函数对象的原型对象，用于构造一个实例的时候，
+      //dog本身并不会有这个属性值，dog通过__proto__去找，也不会找到
+      //但是用dog new 出来的对象，就可以通过__proto__在dog中找到
+      
+		  //原型链
+		  
+		</script>
+	</body>
+</html>

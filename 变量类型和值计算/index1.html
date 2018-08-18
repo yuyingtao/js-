@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>变量类型和计算</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//值类型和引用类型最大的区别 
+			var a= 100;
+			var a1={m:100}
+			var b=a;
+			var b1=a1;
+			a1.m=200;
+			a=22;
+			console.log(b);
+			console.log(b1);
+			//引用类型可以无限制扩展属性，引用类型包括数组，对象，函数
+			function fn(){}
+			fn.m=22;
+			var fn1=fn;
+			console.log(fn1.m)
+			
+			//typeof 
+			//1 只能区分值类型的详细类型
+			//2 不能区分引用类型的详细类型 function可以
+			console.log(typeof null)
+			console.log(typeof "null")
+			console.log(typeof '')
+			console.log(typeof 2)
+			console.log(typeof undefined)
+			
+			//计算
+			100+10
+			100+"1"
+			100=="100"
+			console.log(100=="100");
+			console.log(100==="100");
+			console.log(b1.n==null)
+			console.log(b1.n===undefined)
+			//===不会进行强制类型转换
+			if(0){
+				//0 ,'',flase,NAN ，null ，undefined再if里面会是false
+			}
+			//什么时候会用到双等
+			
+			  if(b1.n==null){
+			  	//这里需要判断n 这个属性是否定义,或者函数的参数
+			  	//b1.n===null||b1.n===undifined
+			  }
+		</script>
+	</body>
+</html>

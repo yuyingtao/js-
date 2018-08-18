@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>实例</title>
+	</head>
+	<body>
+		<h1 id="app">目标元素</h1>
+		<script>
+			function Elem(id) {
+				this.elem = document.getElementById(id)
+			}
+			Elem.prototype.html= function (val) {
+				var elem =this.elem;
+				if(val){
+					elem.innerHTML=val;
+					return this //为了后面的链式操作
+				}else {
+					return elem.innerHTML
+				}
+			}
+			Elem.prototype.on=function (type,fn) {
+				var elem= this.elem;
+				elem.addEventListener(type,fn);
+				return this //为le链式操作
+			}
+			var div=new Elem("app");
+			console.log(div);
+			div.html("我要改变你")
+			div.on("click",function(){
+				console.log("事件绑定成功")
+			})
+			</script>
+	</body>
+</html>

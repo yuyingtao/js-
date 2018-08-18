@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>执行上下文</title>
+	</head>
+	<body>
+		<script>
+    //上下文是用来指定代码某些特定部分中 this 的值
+    console.log(this);
+ 
+    function logFunction() {
+      console.log(this);
+    }
+    new logFunction();
+    
+    //执行上下文
+    console.log(a);
+    var a=22;
+    fn("zhang","nv");
+    function fn(name,age,sex) {
+				this.name=name;
+				this.age=age;
+				this.sex=sex;
+				console.log(this)//如果不 new 的时候，这里是window对象
+			}
+    
+    //代码演示
+     
+     //全局 中 会把函数的声明放在前面执行
+    fn()
+    function fn (){
+    	//声明
+    }
+    var b =fn1();//表达式
+    b();
+    function fn1 (){
+    	//声明
+    }
+		</script>
+	</body>
+</html>
