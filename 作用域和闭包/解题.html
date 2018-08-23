@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>变量提升
+			   <p>执行上下文的意思，就是声明前就可以使用</p>
+			</li>
+			<li>this 的几种不同使用场景
+			   <ul>
+			   	<li></li>
+			   	<li></li>
+			   	<li></li>
+			   	<li></li>
+			   </ul>
+			</li>
+			<li>创建10个a 标签，点击的时候弹出来的对应的序号
+			<a href="">1</a>
+			<a href="">2</a>
+			<a href="">3</a>
+			<a href="">4</a>
+			<a href="">5</a>
+			<a href="">6</a>
+			<a href="">7</a>
+			<a href="">8</a>
+			<a href="">9</a>
+			<a href="">10</a>
+			</li>
+			<li>如何理解作用域的作用
+			  
+			</li>
+			<li>实际开发中闭包的作用
+			  <p>闭包的实际作用封装变量，收敛权限</p>
+			</li>
+		</ul>
+		<script type="text/javascript">
+			//错误写法
+//			var a =document.getElementsByTagName("a");
+//			for(var i=0;i<a.length;i++){
+//				console.log(a[i])
+//				console.log(i)
+//				a[i].addEventListener("click",function (e) {
+//					e.preventDefault();
+//					let h=i;
+//					alert(h)
+//				})
+//			}
+       var a =document.getElementsByTagName("a");
+			for(var i=0;i<a.length;i++){		
+				//创建了10个函数，每个函数里面定义了点击事件，当执行这个点击事件的时候回到定义的地方找
+				//然后这个时候的i 就是不同的i
+				(function (i){
+				  	a[i].addEventListener("click",function (e) {
+					  e.preventDefault();
+				  	alert(i+1)
+				  	})
+				  })(i)
+				
+			}
+		</script>
+	</body>
+</html>

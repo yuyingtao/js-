@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//没有块级作用域
+		if(1){
+			var a=1;
+		}
+		console.log(a)
+		//作用域链
+		var b=100;
+		function fn(){
+			var c=200;
+			function fn1(){
+				var d=200;
+				function fn2(){
+					var h=500;
+					console.log(a);
+					console.log(b);
+					console.log(c);
+					console.log(d);
+					console.log(h);
+					
+				}
+				fn2()
+			}
+			fn1();
+		}
+		fn()
+	</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>this</title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//构造函数
+		function foo(name){
+			this.name=name;
+			console.log(this)
+		}
+		var fo=new foo("taotao")
+		//作为普通函数
+		foo("pengpeng")
+		//作为对象属性
+		var a ={
+			name:"taotao",
+			fn:function(){
+				console.log(this.name)
+			}
+		}
+		a.fn()
+		//作为call applay bind
+		function fn1(name){
+			this.name=name
+			console.log(this)
+		}
+		fn1.call({name:"123"},"1234");
+		fn1.apply({name:"taotao"},["123455"])
+		var fn2=function fn2(name){
+			this.name=name
+			console.log(this)
+		}.bind({y:2})
+		fn2("www")
+	</script>
+</html>
