@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>日期和Math</title>
+	</head>
+	<body>
+		<h1>数组常见API</h1>
+		<ul>
+			<li>forEach</li>
+			<li>every</li>
+			<li>some</li>
+			<li>map</li>
+			<li>sort</li>
+		</ul>
+		<h2>问题</h2>
+		<ul>
+			<li>获取2017-06-10的日期函数
+			<span class="time">
+				
+			</span></li>
+			<li>获取随机数要求是固定长度</li>
+			<li></li>
+		</ul>
+		<script>
+			var arr=[1,2,3,4,5]
+			arr.forEach(function(index){
+				console.log(index)
+			})
+			var m=arr.every(function(index){
+				if(index<5){
+					return true
+				}
+			})
+			
+				var h=arr.some(function(index){
+				if(index<5){
+				return true
+				}
+			})
+					console.log(h)
+			var arr2=arr.map(function(item,index){
+				
+				return item+1
+			
+			})
+					console.log(arr2)
+			arr.sort(function(a,b){
+				
+				return a-b
+			
+			})
+			var arr3=arr.filter(function(item,index){
+				if(item>=3){
+				return true
+					
+				}
+
+			
+			})
+					console.log(arr3);
+		  function formDate(dt){
+		  	if(!dt){
+		  		dt=new Date()
+		  	}
+		  	var year=dt.getFullYear()
+		    var month=dt.getMonth()+1
+		    var day=dt.getDate()
+		    if(month<10){
+		    	month="0"+month
+		    }
+		    if(day<10){
+		    	day+="0"
+		    }
+		    return year+'-'+month+'-'+day
+		  }
+		  var dt=new Date()
+		  var formD=formDate(dt)
+		  console.log(formD)
+		  var random=Math.random()
+		  random=random+"0000000000"
+		  random=random.slice(0,10)
+		  console.log(random)
+		  var Aoo=[1,2,3,4]
+		  
+		  function foreach(obj,func){
+		  	if(!obj){
+		  		return
+		  	}
+		  	if(obj instanceof Array){
+		  		obj.forEach(function(item,index){
+		  			func(item);
+		  		})
+		  	}else{
+		  		for(var i in obj){
+		  			func(obj[i])
+		  		}
+		  	}
+		  }
+		  foreach(Aoo,function(key){
+		  	console.log(key)
+		  })
+		  var Boo={
+		  	x:1,
+		  	y:4,
+		  	z:3
+		  }
+		  foreach(Boo,function(key){
+		  	console.log(key)
+		  })
+			</script>
+	</body>
+</html>
